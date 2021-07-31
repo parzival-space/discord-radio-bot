@@ -51,6 +51,8 @@ client.once("ready", () => {
     radio.on('empty', () => {
       console.log(`[Warning]`, `Stream does not support Icecast. Stream title will not be shown.`);
 
+      client.editStatus("online", { name: 'Music', type: 2 })
+
       connection.play(config.radio.stream, { inlineVolume: true });
       connection.setVolume(config.radio.volume / 100);
     });
