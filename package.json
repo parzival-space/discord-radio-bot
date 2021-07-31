@@ -1,0 +1,21 @@
+{
+  "name": "discord-radio-bot",
+  "version": "1.0.0",
+  "description": "Plays radio streams directly inside your Discord server.",
+  "main": "src/Main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "author": {
+    "name": "Malte Linke",
+    "email": "contact@malte-linke.com",
+    "url": "https://malte-linke.com"
+  },
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "eris": "^0.15.1",
+    "ffmpeg-static": "^4.4.0",
+    "icecast-parser": "^4.0.2"
+  }
+}
