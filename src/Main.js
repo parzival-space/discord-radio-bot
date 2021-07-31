@@ -48,7 +48,12 @@ client.once("ready", () => {
     });
 
     // warn user if stream does not support icecast
-    radio.on('empty', () => console.log(`[Warning]`, `Stream does not support Icecast.`));
+    radio.on('empty', () => {
+      console.log(`[Warning]`, `Stream does not support Icecast. Stream title will not be shown.`);
+
+      connection.play(config.radio.stream, { inlineVolume: true });
+      connection.setVolume(config.radio.volume / 100);
+    });
 
     // display errors
     radio.on('error', err => console.error(`[Error]`, `Failed to read stream: ${err}`));

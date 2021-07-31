@@ -1,6 +1,6 @@
 {
   "name": "discord-radio-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plays radio streams directly inside your Discord server.",
   "main": "src/Main.js",
   "scripts": {
