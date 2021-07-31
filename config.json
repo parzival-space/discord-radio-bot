@@ -1,11 +1,11 @@
 {
   "radio": {
-    "stream": "http://play.sas-media.ru/play_256",
+    "stream": "YOUR_RADIO_URL",
     "volume": 10
   },
 
   "discord": {
-    "token": "ODcwOTg5NjgzMTg0Nzc5MzE0.YQUyWg.Nzpx73im7ovbmLkx-L5B1_Ms73I",
-    "channel": "871084628197376101"
+    "token": "YOUR_BOT_TOKEN",
+    "channel": "YOUR_CHANNEL_ID"
   }
 }
