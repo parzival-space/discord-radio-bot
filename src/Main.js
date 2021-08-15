@@ -6,7 +6,7 @@ const config = require('../config.json');
 require('./Logo');
 
 // inject ffmpeg
-require('./Injector');
+require('ffmpeg-inject');
 
 const client = new Eris.Client(config.discord.token);
 // connect client

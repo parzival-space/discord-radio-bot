@@ -1,6 +1,6 @@
 {
   "name": "discord-radio-bot",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Plays radio streams directly inside your Discord server.",
   "main": "src/Main.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "eris": "^0.15.1",
-    "ffmpeg-static": "^4.4.0",
+    "ffmpeg-inject": "^1.0.0",
     "icecast-parser": "^4.0.2"
   }
 }
