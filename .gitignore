@@ -89,3 +89,12 @@ typings/
 
 # config file
 config.json
+
+# yarn files
+.yarn/*
+.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

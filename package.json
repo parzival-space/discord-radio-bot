@@ -4,19 +4,19 @@
   "description": "Plays radio streams directly inside your Discord server.",
   "main": "src/Main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."
+    "start": "node .",
+    "install-service": "sudo yarn add -g forever forever-service && sudo forever-service install discord-radio-bot src/Main.js",
+    "delete-service": "sudo yarn add -g forever forever-service && sudo forever-service delete discord-radio-bot"
   },
   "author": {
     "name": "Malte Linke",
-    "email": "contact@malte-linke.com",
+    "email": "malte.linke.ml@gmail.com",
     "url": "https://malte-linke.com"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "eris": "^0.15.1",
     "ffmpeg-inject": "^1.0.0",
-    "forever-service": "^0.5.11",
     "icecast-parser": "^4.0.2"
   }
 }
