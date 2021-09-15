@@ -16,6 +16,7 @@
   "dependencies": {
     "eris": "^0.15.1",
     "ffmpeg-inject": "^1.0.0",
+    "forever-service": "^0.5.11",
     "icecast-parser": "^4.0.2"
   }
 }

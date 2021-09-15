@@ -17,14 +17,26 @@ You can specify your own radio stream in the config.<br>
 
 ## Installation
 
-If you want to use this bot on your own server, you just have to pull this repo and follow the steps bellow.
+If you want to use this bot on your own server, you have to perform the following steps:
 
-### Create A New Bot User
+#### 1. Create A New Bot User
 
 First you need to create a new bot account. <br />
 Head over to the <a href="//discord.com/developers">Discord Developer Portal</a>, create a new bot instance and get the bot token.
 
-### Configure The Bot
+### 2. Clone this repository
+```bash
+git clone https://github.com/malte-linke/discord-radio-bot.git
+cd discord-radio-bot
+```
+
+### 3. Install the required dependencies
+```bash
+npm install yarn -g # if you don't have yarn installed
+yarn install
+```
+
+### 4. Configure The Bot
 
 You will find a configuration file (``config.json``) in the root of the repository.<br />
 In there, you will have to make some changes:
@@ -43,18 +55,35 @@ In there, you will have to make some changes:
 }
 ```
 
-### Optional: Install The App As System-Service
+<details>
+  <summary>Example Configuration</summary>
+
+  ```json
+  {
+    "radio": {
+      "stream": "https://play.radioXYZ.fm/source.mp3",
+      "volume": 10
+    },
+    "discord": {
+      "token": "NjY2MTI0MTU5NTI0Mjc0MjEx.XhvmoQ.aAeFrhScOeeAyk5j9atkZtxTG0I",
+      "channel": "370198377088155648"
+    }
+  }
+  ```
+</details>
+
+### 5. Optional: Install The App As System-Service
 
 If you want to start the bot on system startup automatically, you can use the following command.<br />
 To learn more, head over to <a href="//github.com/zapty/forever-service">forever-service</a>.
 
 ```bash
-sudo npm i forever forever-service -g
-sudo forever-service install discord-radio-bot --script src/Main.js
+yarn add forever forever-service -g
+forever-service install discord-radio-bot --script src/Main.js
 ```
 
 This will install a system-service, with the name 'discord-radio-bot', that will run the bot.<br />
-You can remove the service using ``sudo forever-service delete discord-radio-bot``.
+You can remove the service using ``forever-service delete discord-radio-bot``.
 
 <br />
 
@@ -63,7 +92,7 @@ You can remove the service using ``sudo forever-service delete discord-radio-bot
 I used the following librarys in this project:
 
 - <a href="//github.com/abalabahaha/eris">Eris</a> by <a href="//github.com/abalabahaha">abalabahaha</a>
-- <a href="//github.com/eugeneware/ffmpeg-static">ffmpeg-static</a> by <a href="//github.com/eugeneware">eugeneware</a>
 - <a href="//github.com/ghaiklor/icecast-parser">icecast-parser</a> by <a href="//github.com/ghaiklor">ghaiklor</a>
+- <a href="//github.com/malte-linke/ffmpeg-inject">ffmpeg-inject</a> by <a href="//github.com/malte-link">me</a>
 
 
