@@ -19,7 +19,6 @@ cd discord-radio-bot
 ```bash
 # if you don't have yarn installed
 npm install yarn -g
-yarn set version berry
 
 # install the dependencies
 yarn install
