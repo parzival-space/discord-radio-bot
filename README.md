@@ -26,4 +26,4 @@ I used the following librarys in this project:
 
 - <a href="//github.com/abalabahaha/eris">Eris</a> by <a href="//github.com/abalabahaha">abalabahaha</a>
 - <a href="//github.com/ghaiklor/icecast-parser">icecast-parser</a> by <a href="//github.com/ghaiklor">ghaiklor</a>
-- <a href="//github.com/malte-linke/ffmpeg-inject">ffmpeg-inject</a> by <a href="//github.com/malte-link">me</a>
+- <a href="//github.com/parzival-space/ffmpeg-inject">ffmpeg-inject</a> by <a href="//github.com/parzival-space">me</a>
