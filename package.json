@@ -5,8 +5,8 @@
   "main": "src/Main.js",
   "scripts": {
     "start": "node .",
-    "install-service": "sudo yarn add -g forever forever-service && sudo forever-service install discord-radio-bot src/Main.js",
-    "delete-service": "sudo yarn add -g forever forever-service && sudo forever-service delete discord-radio-bot"
+    "install-service": "sudo npm i -g forever forever-service && sudo forever-service install discord-radio-bot src/Main.js",
+    "delete-service": "sudo npm i -g forever forever-service && sudo forever-service delete discord-radio-bot"
   },
   "author": {
     "name": "Malte Linke",

@@ -6,8 +6,7 @@ WORKDIR /app
 COPY . .
 
 # install dependencies
-RUN yarn install
-RUN yarn cache clean
+RUN npm ci
 
 # launch the app
-CMD ["yarn", "start"]
+CMD ["npm", "start"]

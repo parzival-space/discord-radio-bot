@@ -17,11 +17,7 @@ cd discord-radio-bot
 <h2>Install the required dependencies</h2>
 
 ```bash
-# if you don't have yarn installed
-npm install yarn -g
-
-# install the dependencies
-yarn install
+npm i
 ```
 
 <h2>Configure The Bot</h2>

@@ -10,15 +10,15 @@ To install this app as a service, just run:
 ```bash
 # this will install the packages forever and forever-service
 # sudo is required to access the systemctl command
-sudo yarn run install-service
+sudo npm run install-service
 ```
 
 And to remove the service:
 
 ```bash
 # this will remove the service
-sudo yarn run remove-service
+sudo npm run remove-service
 
 # this will not remove forever and forever-service, you need to do that manually using
-sudo yarn remove -g forever forever-service
+sudo npm remove -g forever forever-service
 ```
