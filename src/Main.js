@@ -29,6 +29,7 @@ client.once("ready", () => {
 
   // connect to channel
   channel.join().then(connection => {
+    let lastTitle;
 
     // start ice parser
     let radio = new IceParser(config.radio.stream);
@@ -36,6 +37,12 @@ client.once("ready", () => {
 
     // apply title data
     radio.on('title', title => {
+      if (title == lastTitle) return;
+      lastTitle = title;
+
+      // some radios send invalid song data
+      if (title == "';StreamUrl='") return;
+
       console.log(`[Info]`, `Now playing: ${title}`);
       client.editStatus("online", { name: title, type: 2 })
     });
