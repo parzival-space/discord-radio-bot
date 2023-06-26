@@ -15,7 +15,7 @@
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "eris": "^0.15.1",
+    "eris": "^0.17.2",
     "ffmpeg-inject": "^1.0.0",
     "icecast-parser": "^4.0.2"
   }
