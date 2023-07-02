@@ -3,6 +3,7 @@
   "version": "1.0.3",
   "description": "Plays radio streams directly inside your Discord server.",
   "main": "src/Main.js",
+  "type": "module",
   "scripts": {
     "start": "node .",
     "install-service": "sudo npm i -g forever forever-service && sudo forever-service install discord-radio-bot src/Main.js",
@@ -17,6 +18,6 @@
   "dependencies": {
     "eris": "^0.17.2",
     "ffmpeg-inject": "^1.0.0",
-    "icecast-parser": "^4.0.2"
+    "icecast-metadata-js": "^1.2.6"
   }
 }

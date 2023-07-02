@@ -1,4 +1,4 @@
-const { version, author } = require('../package.json');
+import packageJson from '../package.json' assert { "type": "json" };
 
 console.log(
   ",------.  ,--.                              ,--.    ,------.            ,--.,--.           ,-----.           ,--.   \n" +
@@ -6,5 +6,5 @@ console.log(
   "|  |  \\  :,--.(  .-' | .--'| .-. ||  .--'' .-. |    |  '--'.'' ,-.  |' .-. |,--.| .-. |    |  .-.  \\| .-. |'-.  .-' \n" +
   "|  '--'  /|  |.-'  `)\\ `--.' '-' '|  |   \\ `-' |    |  |\\  \\ \\ '-'  |\\ `-' ||  |' '-' '    |  '--' /' '-' '  |  |   \n" +
   "`-------' `--'`----'  `---' `---' `--'    `---'     `--' '--' `--`--' `---' `--' `---'     `------'  `---'   `--'   \n" +
-  `                                   Discord Radio Bot v${version} by ${author.name}                                  \n`
+  `                                   Discord Radio Bot v${packageJson.version} by ${packageJson.author.name}                                  \n`
 );

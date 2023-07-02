@@ -1,16 +1,12 @@
-const Eris = require('eris');
-const IceParser = require('./IceParser');
-const config = require('../config.json');
+import { Client } from 'eris';
+import { IceParser } from './IceParser.js';
+import config from '../config.json' assert { "type": "json" };
 
-// print logo
-require('./Logo');
+import './Logo.js';
+import 'ffmpeg-inject';
 
-// inject ffmpeg
-require('ffmpeg-inject');
-
-const client = new Eris.Client(config.discord.token);
-// connect client
-client.connect();
+const client = new Client(config.discord.token);
+client.connect().then();
 
 // register err event listener
 client.on("error", err => console.error(`[Error]`, `Unexpected error: ${err}`));
@@ -29,26 +25,20 @@ client.once("ready", () => {
 
   // connect to channel
   channel.join().then(connection => {
-    let lastTitle;
-
     // start ice parser
     let radio = new IceParser(config.radio.stream);
     console.log(`[Info]`, `Awaiting data...`);
 
     // apply title data
     radio.on('title', title => {
-      if (title == lastTitle) return;
-      lastTitle = title;
-
-      // some radios send invalid song data
-      if (title == "';StreamUrl='") return;
-
       console.log(`[Info]`, `Now playing: ${title}`);
       client.editStatus("online", { name: title, type: 2 })
     });
 
     // play stream data
-    radio.on('stream', stream => {
+    let i = 0;
+    radio.once('stream', stream => {
+
       // start stream and set volume
       connection.play(stream, { inlineVolume: true });
       connection.setVolume(config.radio.volume / 100);
@@ -56,11 +46,9 @@ client.once("ready", () => {
 
     // warn user if stream does not support icecast
     radio.on('empty', () => {
-      console.log(`[Warning]`, `Stream does not support Icecast. Stream title will not be shown.`);
+      console.log(`[Warning]`, `Stream is not providing metadata. This is not really a problem as the playback will not fail.`);
 
       client.editStatus("online", { name: 'Music', type: 2 })
-
-      connection.play(config.radio.stream, { inlineVolume: true });
       connection.setVolume(config.radio.volume / 100);
     });
 
