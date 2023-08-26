@@ -1,5 +1,10 @@
 <h1>Discord Radio Bot</h1>
 
+> [!WARNING]
+> This version of the bot is no longer supported.
+> There are some known bugs (like <a href="//github.com/parzival-space/discord-radio-bot/issues/8">#8</a>) that will not be fixed.
+> I am currently working on a rewrite in Java. Please check out the main branch.
+
 Plays radio streams directly inside your Discord server.<br />
 This bot has no commands, its for playing radio streams only.<br />
 You can specify your own radio stream in the config.<br>
