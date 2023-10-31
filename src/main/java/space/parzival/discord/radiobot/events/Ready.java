@@ -24,6 +24,7 @@ import space.parzival.discord.radiobot.icecast.IcyAudioLoadResultHandler;
 import space.parzival.discord.radiobot.icecast.IcyAudioPlayerManager;
 import space.parzival.discord.radiobot.player.AudioPlayerSendHandler;
 import space.parzival.discord.radiobot.properties.ClientProperties;
+import space.parzival.discord.radiobot.properties.StreamProperties;
 
 import java.nio.ByteBuffer;
 
@@ -37,6 +38,9 @@ public class Ready extends ListenerAdapter {
     @Autowired
     private ClientProperties clientProperties;
 
+    @Autowired
+    private StreamProperties streamProperties;
+
     public void onReady(@NotNull ReadyEvent event) {
         log.info("This bot is now ready and connected to {} guilds.", event.getGuildTotalCount());
 
@@ -49,10 +53,10 @@ public class Ready extends ListenerAdapter {
         AudioPlayer player = playerManager.createPlayer();
         guild.getAudioManager().setSendingHandler(new AudioPlayerSendHandler(player));
 
-        playerManager.loadIcyStream("https://play.sas-media.ru/play_256", new IcyAudioLoadResultHandler() {
+        playerManager.loadIcyStream(streamProperties.getUrl(), new IcyAudioLoadResultHandler() {
             @Override
             public void metadataUpdated(String metadata) {
-
+                // do nothing
             }
 
             @Override
@@ -63,7 +67,7 @@ public class Ready extends ListenerAdapter {
 
             @Override
             public void playlistLoaded(AudioPlaylist audioPlaylist) {
-
+                // do nothing
             }
 
             @Override
