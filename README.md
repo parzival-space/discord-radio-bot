@@ -28,6 +28,7 @@ Fill it like so:
 ```properties
 discord.token=<<your token>>
 discord.channel=<<your channel id>>
+stream.url=<<your url>>
 ```
 
 And run it: ``java -jar radiobot.jar``
