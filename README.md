@@ -23,7 +23,7 @@ You need the following:
 ### Running the Bot
 Download the latest <a href="//github.com/parzival-space/discord-radio-bot/releases">release</a>.
 
-Then you have to create a file called ``application.properties`` in the same directory as the bot (the jar file you jus downloaded).
+Then you have to create a file called ``application.properties`` in the same directory as the bot (the jar file you you just downloaded).
 Fill it like so:
 ```properties
 discord.token=<<your token>>
