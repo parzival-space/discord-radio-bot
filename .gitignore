@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# ignore spring boot profiles
+application-*.properties
+application-*.yml
