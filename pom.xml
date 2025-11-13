@@ -28,7 +28,8 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.18.42</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -38,12 +39,12 @@
 		<dependency>
 			<groupId>net.dv8tion</groupId>
 			<artifactId>JDA</artifactId>
-			<version>5.0.0-beta.12</version>
+			<version>6.1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.walkyst</groupId>
-			<artifactId>lavaplayer-fork</artifactId>
-			<version>1.4.3</version>
+            <groupId>dev.arbjerg</groupId>
+            <artifactId>lavaplayer</artifactId>
+			<version>2.2.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
@@ -76,12 +77,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>jitpack</id>
-			<url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-
 </project>
