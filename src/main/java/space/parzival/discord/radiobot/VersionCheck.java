@@ -1,31 +1,26 @@
 package space.parzival.discord.radiobot;
 
+import jakarta.annotation.PostConstruct;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.message.BasicHeader;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.info.BuildProperties;
-import org.springframework.stereotype.Component;
 import org.apache.maven.artifact.versioning.ComparableVersion;
+import org.springframework.boot.info.BuildProperties;
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-import space.parzival.discord.radiobot.properties.HttpProperties;
 import space.parzival.discord.radiobot.model.GitHubRelease;
-
-import java.util.List;
+import space.parzival.discord.radiobot.properties.HttpProperties;
 
 @Slf4j
-@Component
-public class VersionCheck implements InitializingBean {
+@Service
+@AllArgsConstructor
+public class VersionCheck {
 
-    @Autowired
     private HttpProperties httpProperties;
-
-    @Autowired
     private BuildProperties buildProperties;
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    @PostConstruct
+    public void check() throws Exception {
         ComparableVersion latest = this.getLatestVersion();
         ComparableVersion current = new ComparableVersion(buildProperties.getVersion());
 
