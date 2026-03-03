@@ -1,8 +1,11 @@
 package space.parzival.discord.radiobot;
 
+import club.minnced.discord.jdave.interop.JDaveSessionFactory;
+import com.sedmelluq.discord.lavaplayer.jdaudp.NativeAudioSendFactory;
 import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.audio.AudioModuleConfig;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +22,9 @@ public class ClientConfiguration {
     public JDA discordInstance(ClientProperties clientProperties, List<? extends ListenerAdapter> events) {
         JDA client = JDABuilder
             .createDefault(clientProperties.getToken())
+            .setAudioModuleConfig(new AudioModuleConfig()
+                .withDaveSessionFactory(new JDaveSessionFactory())
+                .withAudioSendFactory(new NativeAudioSendFactory()))
             .build();
 
         events.forEach(client::addEventListener);
