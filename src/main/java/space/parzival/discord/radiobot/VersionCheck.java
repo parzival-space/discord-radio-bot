@@ -39,15 +39,15 @@ public class VersionCheck implements InitializingBean {
 
     private ComparableVersion getLatestVersion() {
         WebClient githubClient = WebClient.builder()
-                .defaultHeader("User-Agent", httpProperties.getUserAgent())
-                .baseUrl("https://api.github.com")
-                .build();
+            .defaultHeader("User-Agent", httpProperties.getUserAgent())
+            .baseUrl("https://api.github.com")
+            .build();
 
         Mono<GitHubRelease[]> response = githubClient
-                .get()
-                .uri(httpProperties.getVersionUrl())
-                .retrieve()
-                .bodyToMono(GitHubRelease[].class);
+            .get()
+            .uri(httpProperties.getVersionUrl())
+            .retrieve()
+            .bodyToMono(GitHubRelease[].class);
 
         GitHubRelease[] releases = response.block();
         if (releases != null && releases.length >= 1)

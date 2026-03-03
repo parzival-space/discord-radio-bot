@@ -18,8 +18,8 @@ public class ClientConfiguration {
     @Bean
     public JDA discordInstance(ClientProperties clientProperties, List<? extends ListenerAdapter> events) {
         JDA client = JDABuilder
-                .createDefault(clientProperties.getToken())
-                .build();
+            .createDefault(clientProperties.getToken())
+            .build();
 
         events.forEach(client::addEventListener);
 
