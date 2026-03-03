@@ -1,11 +1,5 @@
 # Discord Radio Bot
 
-> [!IMPORTANT]
-> You are currently viewing the Java rewrite of the bot.
-> I am not done yet, and some features are missing.
-> If you are looking for the old Node.js-based version,
-> click <a href="//github.com/parzival-space/discord-radio-bot/tree/main-old-node">here</a>.
-
 Plays radio streams directly within your Discord server.
 This bot has no commands; it's for playing radio streams only.
 You can specify your own radio stream in the config.
