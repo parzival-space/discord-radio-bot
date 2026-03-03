@@ -35,3 +35,4 @@ build/
 # ignore spring boot profiles
 application-*.properties
 application-*.yml
+application-*.yaml
