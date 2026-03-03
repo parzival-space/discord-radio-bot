@@ -20,11 +20,11 @@ public class VersionCheck {
     private BuildProperties buildProperties;
 
     @PostConstruct
-    public void check() throws Exception {
+    public void check() {
         ComparableVersion latest = this.getLatestVersion();
         ComparableVersion current = new ComparableVersion(buildProperties.getVersion());
 
-        if (current.compareTo(latest) > 0) {
+        if (current.compareTo(latest) < 0) {
             log.warn("------------------------------------------------------------------");
             log.warn("You are currently running version {}, but {} ", current, latest);
             log.warn("is already available. Please consider updating.");
@@ -44,8 +44,16 @@ public class VersionCheck {
             .retrieve()
             .bodyToMono(GitHubRelease[].class);
 
-        GitHubRelease[] releases = response.block();
-        if (releases != null && releases.length >= 1)
+        GitHubRelease[] releases;
+        try {
+            releases = response.block();
+        } catch (Exception e) {
+            log.warn("Failed to fetch latest version from GitHub. Exception: {}", e.getMessage());
+            return new ComparableVersion("0.0.0");
+        }
+
+        assert releases != null;
+        if (releases.length >= 1)
             return new ComparableVersion(releases[0].tag_name);
 
         return new ComparableVersion("0.0.0");
