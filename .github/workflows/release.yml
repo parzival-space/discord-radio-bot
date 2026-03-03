@@ -1,0 +1,76 @@
+name: Create Release
+on: workflow_dispatch
+
+permissions:
+  contents: write
+
+env:
+  PIPELINE_JAVA_VERSION: 25
+  PIPELINE_JAVA_DIST: zulu
+
+jobs:
+  verify:
+    name: Verify Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: "Set up JDK ${{ env.PIPELINE_JAVA_VERSION }}"
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ env.PIPELINE_JAVA_VERSION }}
+          distribution: ${{ env.PIPELINE_JAVA_DIST }}
+      - name: "Cache Maven packages"
+        uses: actions/cache@v5
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Maven Verify
+        run: ./mvnw clean verify
+
+  publish_release:
+    name: Publish Release
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: "Set up JDK ${{ env.PIPELINE_JAVA_VERSION }}"
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ env.PIPELINE_JAVA_VERSION }}
+          distribution: ${{ env.PIPELINE_JAVA_DIST }}
+      - name: "Cache Maven packages"
+        uses: actions/cache@v5
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: "Maven Package"
+        run: ./mvnw -DskipTests=true -B clean package
+      - name: "Collect Project Information"
+        id: project_info
+        run: |
+          echo "name=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.artifactId}' --non-recursive exec:exec)" >> $GITHUB_OUTPUT
+          echo "version=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_OUTPUT
+          if [[ $(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec) == *-SNAPSHOT ]]; then
+            echo "snapshot=true" >> $GITHUB_OUTPUT
+          else
+            echo "snapshot=false" >> $GITHUB_OUTPUT
+          fi
+      - name: "Create Release"
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Release ${{ steps.project_info.outputs.version }}"
+          tag_name: "v${{ steps.project_info.outputs.version }}"
+          draft: true
+          prerelease: ${{ steps.project_info.outputs.snapshot == 'true' }}
+          fail_on_unmatched_files: true
+          generate_release_notes: true
+          make_latest: ${{ steps.project_info.outputs.snapshot != 'true' }}
+          files: ./target/${{ steps.project_info.outputs.name }}-${{ steps.project_info.outputs.version }}.jar
