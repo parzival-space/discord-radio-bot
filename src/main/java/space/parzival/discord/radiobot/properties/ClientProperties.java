@@ -5,7 +5,8 @@ import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@Getter @Setter
+@Getter
+@Setter
 @ConfigurationProperties(prefix = "discord")
 public class ClientProperties {
 

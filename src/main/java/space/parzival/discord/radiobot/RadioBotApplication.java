@@ -12,14 +12,14 @@ import space.parzival.discord.radiobot.properties.StreamProperties;
 @SpringBootApplication
 @EnableConfigurationProperties
 @Import({
-		ClientProperties.class,
-		StreamProperties.class,
-		HttpProperties.class
+    ClientProperties.class,
+    StreamProperties.class,
+    HttpProperties.class
 })
 public class RadioBotApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RadioBotApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RadioBotApplication.class, args);
+    }
 
 }
