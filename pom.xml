@@ -11,7 +11,7 @@
 
 	<groupId>space.parzival.discord</groupId>
 	<artifactId>radiobot</artifactId>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 
 	<name>radiobot</name>
 	<description>Plays radio streams directly inside your Discord server.</description>

@@ -11,6 +11,21 @@ This bot has no commands; it's for playing radio streams only.
 You can specify your own radio stream in the config.
 <br>
 
+## Supported Platforms
+Discord uses the [Discord Audio & Video End-to-End Encryption (DAVE)](https://daveprotocol.com/) protocol which requires
+the use of native libraries to work. This bot uses the [JDAVE](https://github.com/MinnDevelopment/jdave) and 
+[udpqueue.rs](https://github.com/MinnDevelopment/udpqueue.rs) to support this protocol.
+Since these libraries are native, they only support certain platforms. 
+
+This bot is currently only supported on the following platforms:
+
+| Platform | Architecture      |
+|----------|-------------------|
+| Linux    | x86_64, aarch64   |
+| Windows  | x86_64            |
+| MacOS    | Darwin (Untested) |
+
+
 ## How to
 
 ### Requirements
