@@ -8,8 +8,8 @@ You can specify your own radio stream in the config.
 ## Supported Platforms
 Discord uses the [Discord Audio & Video End-to-End Encryption (DAVE)](https://daveprotocol.com/) protocol which requires
 the use of native libraries to work. This bot uses the [JDAVE](https://github.com/MinnDevelopment/jdave) and 
-[udpqueue.rs](https://github.com/MinnDevelopment/udpqueue.rs) to support this protocol.
-Since these libraries are native, they only support certain platforms. 
+[udpqueue.rs](https://github.com/MinnDevelopment/udpqueue.rs) libraries to support this protocol.
+Since these are native libraries, they only support certain platforms. 
 
 This bot is currently only supported on the following platforms:
 
